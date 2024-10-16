@@ -6,7 +6,15 @@ const numberPages = document.querySelector("#numberPages");
 const readStatus = document.querySelector("#readStatus")
 
 btn.addEventListener("click", () => {
-    let book
+    let bookOne = {
+      title: bookName.value,
+      author: authorName.value,
+      pages: numberPages.value,
+      read: readStatus.value
+    }
+    myLibrary.push(bookOne);
+    console.log(myLibrary)
+    event.preventDefault();
 }
 )
     
