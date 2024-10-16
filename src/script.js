@@ -33,6 +33,7 @@ btn.addEventListener("click", (event) => {
     let authorDivOne = document.createElement("h2");
     let pagesDivOne = document.createElement("h3");
     let readDivOne = document.createElement("p");
+    let deleteButton = document.createElement("button")
 
     divOne.classList.add("flex", "flex", "flex-col", "w-80", "h-56", "bg-slate-200", "p-4", "rounded");
     
@@ -43,11 +44,20 @@ btn.addEventListener("click", (event) => {
     
     pagesDivOne.textContent = "Pages: " + bookOne.pages;
     readDivOne.textContent = "Have I read this book?: " + bookOne.read;
+
+    deleteButton.textContent = "Delete"
+    deleteButton.classList.add("p-2", "font-light", "rounded", "bg-red-300" , "mt-4")
+
+    deleteButton.addEventListener("click", () => {
+      booksList.removeChild(divOne);
+    }
+  )
     
     divOne.appendChild(titleDivOne);
     divOne.appendChild(authorDivOne);
     divOne.appendChild(pagesDivOne);
     divOne.appendChild(readDivOne);
+    divOne.appendChild(deleteButton)
     booksList.appendChild(divOne);
 
 
