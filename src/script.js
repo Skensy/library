@@ -6,7 +6,10 @@ const numberPages = document.querySelector("#numberPages");
 const readStatus = document.querySelector("#readStatus")
 const booksList = document.querySelector("#booksList")
 
-btn.addEventListener("click", () => {
+
+btn.addEventListener("click", (event) => {
+    event.preventDefault(); // Prevent form from submitting
+
     let bookOne = {
       title: bookName.value,
       author: authorName.value,
@@ -14,7 +17,14 @@ btn.addEventListener("click", () => {
       read: readStatus.value
     }
 
-    event.preventDefault();
+    if (bookOne.title === "" || bookOne.author === "" || bookOne.pages === "" || bookOne.read === "") {
+      alert("Per favore riempi i campi");
+      return
+    }
+
+    if (bookOne.read === "on") {
+      bookOne.read = "yes"
+    }
 
     myLibrary.push(bookOne);
 
@@ -26,13 +36,13 @@ btn.addEventListener("click", () => {
 
     divOne.classList.add("flex", "flex", "flex-col", "w-80", "h-56", "bg-slate-200", "p-4", "rounded");
     
-    titleDivOne.textContent = bookOne.title;
+    titleDivOne.textContent = "Title: " + bookOne.title;
     titleDivOne.classList.add("text-xl", "mb-2")
     
-    authorDivOne.textContent = bookOne.author;
+    authorDivOne.textContent = "Author: " + bookOne.author;
     
-    pagesDivOne.textContent = bookOne.pages;
-    readDivOne.textContent = bookOne.read;
+    pagesDivOne.textContent = "Pages: " + bookOne.pages;
+    readDivOne.textContent = "Have I read this book?: " + bookOne.read;
     
     divOne.appendChild(titleDivOne);
     divOne.appendChild(authorDivOne);
@@ -47,8 +57,7 @@ btn.addEventListener("click", () => {
     readStatus.value = "";
 
 
-    event.preventDefault();
-
+    return
 }
 )
     
