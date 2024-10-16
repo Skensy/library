@@ -17,7 +17,7 @@ btn.addEventListener("click", (event) => {
       read: readStatus.value
     }
 
-    if (bookOne.title === "" || bookOne.author === "" || bookOne.pages === "" || bookOne.read === "") {
+    if (bookOne.title === "" || bookOne.author === "" || bookOne.pages === "") {
       alert("Per favore riempi i campi");
       return
     }
